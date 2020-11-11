@@ -15,4 +15,4 @@ Price_change: uses an API (documentation here (LINK HERE 2)) which returns time-
 
 Scrape_wsj motivation and usage:
 
-The motivation behind creating 'Scrape_wsj' was so that I could have a way of accessing many different companies' financial statement data in a timely manner. I could then use this data to compare similar companies on their use of debt, capital expenditures, cash flow from operations, etc. [Here](github1.PNG) is what I came up with as far as telling the program what kind of information I want and where to put that information when it's done scraping.
+The motivation behind creating 'Scrape_wsj' was so that I could have a way of accessing many different companies' financial statement data in a timely manner. I could then use this data to compare similar companies on their use of debt, capital expenditures, cash flow from operations, etc. [Here](images/wsj_img1.PNG) is what I came up with as far as telling the program what kind of information I want and where to put that information when it's done scraping.
