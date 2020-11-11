@@ -12,9 +12,14 @@ Scrape_finra: scrapes Morningstar's Finra site so that I can have access to the 
 Price_change: uses an API (documentation here (LINK HERE 2)) which returns time-series data of a stock's market price at close.
 
 
-
 Scrape_wsj motivation and usage:
 
 The motivation behind creating 'Scrape_wsj' was so that I could have a way of accessing many different companies' financial statement data in a timely manner. I could then use this data to compare similar companies on their use of debt, capital expenditures, cash flow from operations, etc. [Here](images/wsj_img.PNG) is what I came up with as far as telling the program what kind of information I want and where to put that information when it's done scraping.
 
-In cell A1, you either enter 'Quarterly' or 'Annually', depending on what kind of financial data you are looking for. In the first column you enter the tickers that you want to scrape. The cells that are highlighted green in the first three rows are where you would enter the statement, time period, and account. 
+If you are looking to use this code yourself here are the steps you should take to ensure ease of use.
+
+First, in cell A1 enter either 'Annually' or 'Quarterly' depending on whether you are looking for annual data or quarter data. 
+
+Second, enter the ticker symbols of the companies you'd like to scrape for in the green cells highlighted in column 1.
+
+Third, in the first three rows of the Google Sheet where the cells are highlighted green you should enter the statement, time period, and the account for each piece of data you would like returned. Here are valid entries for the 'statement' field: 'income-statement', 'balance-sheet', 'cash-flows'. Things get a little confusing for the Time Period row because there is a difference depending on whether you enter 'Annually' or 'Quarterly' into cell A1. If you're looking for annual data then enter the year you would like to scrape for (e.g. 2019). For quarterly data it gets tricky because different companies are on different schedules as far as their quarterly reporting goes. With that in mind, I made it so that the Time Period that is entered is in relation to the most recent quarter (e.g. Most Recent Quarter + 1). For the full key, click [here](supplementary_files/time period for quarters).  
