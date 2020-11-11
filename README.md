@@ -16,3 +16,5 @@ Price_change: uses an API (documentation here (LINK HERE 2)) which returns time-
 Scrape_wsj motivation and usage:
 
 The motivation behind creating 'Scrape_wsj' was so that I could have a way of accessing many different companies' financial statement data in a timely manner. I could then use this data to compare similar companies on their use of debt, capital expenditures, cash flow from operations, etc. [Here](images/wsj_img1.PNG) is what I came up with as far as telling the program what kind of information I want and where to put that information when it's done scraping.
+
+In cell A1, you either enter 'Quarterly' or 'Annually', depending on what kind of financial data you are looking for. In the first column you enter the tickers that you want to scrape. The cells that are highlighted green in the first three rows are where you would enter the statement, time period, and account. 
