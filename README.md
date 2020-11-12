@@ -3,24 +3,24 @@
 
 Below are short summaries for each of the programs that I made. After the summaries, I will go into more depth about each program, why I made it, and how I used it. 
 
-Scrape_wsj: scrapes financial statement information (either from the balance sheet, income statement, or statement of cash flows) from wsj.com and enters that data into Google Sheets. Can specify between Quarterly and Yearly financial data. 
+**Scrape_wsj:** scrapes financial statement information (either from the balance sheet, income statement, or statement of cash flows) from wsj.com and enters that data into Google Sheets. Can specify between Quarterly and Yearly financial data. 
 
-Scrape_yahoo: scrapes a company's Yahoo Financial Statistics page which offers information regarding that company's valuation ratios, profitability metrics, and other data for that company. 
+**Scrape_yahoo:** scrapes a company's Yahoo Financial Statistics page which offers information regarding that company's valuation ratios, profitability metrics, and other data for that company. 
 
-Scrape_finra: scrapes Morningstar's Finra site so that I can have access to the bond yields of a particular bond offering from a company of interest. It will keep scraping until it reaches a certain predetermined date, giving the user time-series data of bond yields. 
+**Scrape_finra:** scrapes Morningstar's Finra site so that I can have access to the bond yields of a particular bond offering from a company of interest. It will keep scraping until it reaches a certain predetermined date, giving the user time-series data of bond yields. 
 
-Price_change: uses an API (documentation here (LINK HERE 2)) which returns time-series data of a stock's market price at close.
+**Price_change:** uses an API (documentation here (LINK HERE 2)) which returns time-series data of a stock's market price at close.
 
 
-Scrape_wsj motivation and usage:
+**Scrape_wsj motivation and usage**
 
 The motivation behind creating 'Scrape_wsj' was so that I could have a way of accessing many different companies' financial statement data in a timely manner. I could then use this data to compare similar companies on their use of debt, capital expenditures, cash flow from operations, etc. [Here](images/wsj_img.PNG) is what I came up with as far as telling the program what kind of information I want and where to put that information when it's done scraping.
 
 If you are looking to use this code yourself here are the steps you should take to ensure ease of use.
 
-First, in cell A1 enter either 'Annually' or 'Quarterly' depending on whether you are looking for annual data or quarter data. 
+* First, in cell A1 enter either 'Annually' or 'Quarterly' depending on whether you are looking for annual data or quarter data. 
 
-Second, enter the ticker symbols of the companies you'd like to scrape for in the green cells highlighted in column 1.
+* Second, enter the ticker symbols of the companies you'd like to scrape for in the green cells highlighted in column 1.
 
 Third, in the first three rows of the Google Sheet where the cells are highlighted green you should enter the statement, time period, and the account for each piece of data you would like returned. Here are valid entries for the 'statement' field: 'income-statement', 'balance-sheet', 'cash-flows'. 
 
