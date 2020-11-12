@@ -16,7 +16,7 @@ Below are short summaries for each of the programs that I made. After the summar
 
 The motivation behind creating 'Scrape_wsj' was so that I could have a way of accessing many different companies' financial statement data in a timely manner. I could then use this data to compare similar companies on their use of debt, capital expenditures, cash flow from operations, etc. Below is the user interface I came up with which allows the user to enter the kind of information they want and it is where the program will return the data when it's done scraping.
 
-![table 1](https://github.com/rossleavitt/stock_analysis/blob/main/images/wsj_img1.PNG) 
+![table 1](https://github.com/rossleavitt/stock_analysis/blob/main/images/wsj_img_1.PNG) 
 
 If you are looking to use this code yourself here are the steps you should take to ensure ease of use. *Note: green cells are 'user-input' cells and red cells are 'program-return' cells.*
 
