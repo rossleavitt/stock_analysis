@@ -1,5 +1,5 @@
 # stock_analysis
-                                                                    ##Summary of stock_analysis
+                                                                    ## Summary of stock_analysis
 This GitHub consists of 4 programs which scrape different websites for various kinds of data pertaining to a stock or a group of stocks. All this data was then used in a factor analysis of the Utility Industry. If you would like more information about the factor analysis that was done, visit here (LINK HERE 1). 
 
 Below are short summaries for each of the programs that I made. After the summaries, I will go into more depth about each program, why I made it, and how I used it. 
