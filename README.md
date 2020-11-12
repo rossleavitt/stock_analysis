@@ -24,7 +24,7 @@ If you are looking to use this code yourself here are the steps you should take 
 
 * Second, enter the ticker symbols of the companies you'd like to scrape for in in column 1.
 
-* Third, in the first three rows of the Google Sheet you should enter the information regarding the type of data you want to collect. This consists of the **statement**, *time period, and the account for each piece of data you would like returned. 
+* Third, in the first three rows of the Google Sheet you should enter the information regarding the type of data you want to collect. This consists of the **Statement**, **Time Period**, and **Account**. 
   
   * Here are valid entries for the 'statement' field: 'income-statement', 'balance-sheet', 'cash-flows'. 
 
