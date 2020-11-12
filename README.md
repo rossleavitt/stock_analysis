@@ -24,7 +24,8 @@ If you are looking to use this code yourself here are the steps you should take 
 
 * Second, enter the ticker symbols of the companies you'd like to scrape for in in column 1.
 
-* Third, in the first three rows of the Google Sheet you should enter the information regarding the type of data you want to collect. This consists of the statement, time period, and the account for each piece of data you would like returned. 
+* Third, in the first three rows of the Google Sheet you should enter the information regarding the type of data you want to collect. This consists of the **statement**, *time period, and the account for each piece of data you would like returned. 
+  
   * Here are valid entries for the 'statement' field: 'income-statement', 'balance-sheet', 'cash-flows'. 
 
 * Things get a little confusing for the Time Period row because there is a difference depending on whether you enter 'Annually' or 'Quarterly' into cell A1. If you're looking for annual data then enter the year you would like to scrape for (e.g. 2019). For quarterly data it gets tricky because different companies are on different schedules as far as their quarterly reporting goes. With that in mind, I made it so that the Time Period that is entered is in relation to the most recent quarter (e.g. Most Recent Quarter + 1). For the full key, click [here](supplementary_files/quarter_time_period.md). 
