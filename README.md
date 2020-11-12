@@ -16,7 +16,7 @@ Below are short summaries for each of the programs that I made. After the summar
 
 The motivation behind creating 'Scrape_wsj' was so that I could have a way of accessing many different companies' financial statement data in a timely manner. I could then use this data to compare similar companies on their use of debt, capital expenditures, cash flow from operations, etc. ![Here](https://github.com/rossleavitt/stock_analysis/blob/main/images/wsj_img1.PNG) is what I came up with as far as telling the program what kind of information I want and where to put that information when it's done scraping.
 
-If you are looking to use this code yourself here are the steps you should take to ensure ease of use.
+If you are looking to use this code yourself here are the steps you should take to ensure ease of use. *Note: green cells are 'user-input' cells and red cells are 'program return' cells.*
 
 * First, in cell A1 enter either 'Annually' or 'Quarterly' depending on whether you are looking for annual data or quarter data. 
 
