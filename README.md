@@ -44,9 +44,11 @@ Now that I have gone over the set up, I will show you one example of how this co
 
 This program utilizes Google Sheets API for entering in information and Beautiful Soup for scraping yahoo.com.
 
-The reason why I created Scrape_yahoo is because I wanted a way to get information about a company's valuation metrics, various financial statistics and general company information and Yahoo Finance is a great source of information. 
+The reason why I created Scrape_yahoo is because I wanted a way to get information about a company's valuation metrics, various financial statistics and general company information and Yahoo Finance is a great source of information. Below find the user interface for Scrape_yahoo.
 
-Using this code is similar to Scrape_wsj in that the format of the Google Sheets are similar between the two. Below find the user interface for Scrape_yahoo.
+![yah_image_1](https://github.com/rossleavitt/stock_analysis/blob/main/images/yah_img1.PNG)
+
+
 
 
 
