@@ -35,3 +35,7 @@ If you are looking to use this code yourself here are the steps you should take 
 * Finally, enter in what I call 'Unique Labels' in column O of the spreadsheet. Any account that will return as a percentage (like Current Ratio) or which has its own set of units (like Earnings per Share) should be included in Unique Labels. All other accounts (like Cash, Free Cash Flow, or Long-Term Debt) will be multiplied by what the web page says are the units for that page. Usually, the units are in thousands of dollars or millions of dollars. Everything in Unique Labels will not be multiplied by that number.
 
 Now that I have gone over the set up, I will show you one example of how this code could be used for financial analysis. After setting up the Google Sheet like I showed previously, I ran the code and after it was done running the red cells were populated. I took this data and came up with the following table for the second quarter of 2020. 
+
+![wsj image 2](https://github.com/rossleavitt/stock_analysis/blob/main/images/wsj_img_2.PNG)
+
+Any 
