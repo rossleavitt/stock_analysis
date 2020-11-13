@@ -14,6 +14,8 @@ Below are short summaries for each of the programs that I made. After the summar
 
 **Scrape_wsj motivation and usage**
 
+This program utilizes Google Sheets API for entering in information and Selenium for scraping wsj.com.
+
 The motivation behind creating 'Scrape_wsj' was so that I could have a way of accessing many different companies' financial statement data in a timely manner. I could then use this data to compare similar companies on their use of debt, capital expenditures, cash flow from operations, etc. Below is the user interface I came up with which allows the user to enter the kind of information they want and it is where the program will return the data when it's done scraping.
 
 ![table 1](https://github.com/rossleavitt/stock_analysis/blob/main/images/wsj_img_1.PNG) 
@@ -38,4 +40,13 @@ Now that I have gone over the set up, I will show you one example of how this co
 
 ![wsj image 2](https://github.com/rossleavitt/stock_analysis/blob/main/images/wsj_img_2.PNG)
 
-Any 
+**Scrape_yahoo motivation and usage**
+
+This program utilizes Google Sheets API for entering in information and Beautiful Soup for scraping yahoo.com.
+
+The reason why I created Scrape_yahoo is because I wanted a way to get information about a company's valuation metrics, various financial statistics and general company information and Yahoo Finance is a great source of information. 
+
+Using this code is similar to Scrape_wsj in that the format of the Google Sheets are similar between the two. Below find the user interface for Scrape_yahoo.
+
+
+
