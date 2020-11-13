@@ -48,7 +48,9 @@ The reason why I created Scrape_yahoo is because I wanted a way to get informati
 
 ![yah_image_1](https://github.com/rossleavitt/stock_analysis/blob/main/images/yah_img1.PNG)
 
+To get to the web page that I scraped for this project, go to any stock's Yahoo Finance page and click on the header called "Statistics". [Here](https://finance.yahoo.com/quote/NEE/key-statistics?p=NEE) is NextEra Energy's Yahoo Finance Statistics page for reference: 
 
+While I like using Scrape_wsj for retreiving financial data, there is some data which is much easier to get from Yahoo.
 
 
 
