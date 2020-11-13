@@ -64,5 +64,7 @@ There are only two things that need to be entered for Scrape_finra so I decided 
 
 ![fin_image_1](https://github.com/rossleavitt/stock_analysis/blob/main/images/fin_img_1.PNG) 
 
+Then I can use the trade amount and the bond yield data that I get for each day and come up with an average bond yield for each of the dates listed. With that I can create graphs to see how these yields have changed over time.
 
+**Price_change motivation and usage**
 
