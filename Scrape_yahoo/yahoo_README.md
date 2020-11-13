@@ -1,1 +1,13 @@
+**Scrape_yahoo motivation and usage**
 
+This program utilizes Google Sheets API for entering in information and Beautiful Soup for scraping yahoo.com.
+
+The reason why I created Scrape_yahoo is because I wanted a way to get information about a company's valuation metrics, various financial statistics and general company information and Yahoo Finance is a great source of information. Below find the user interface for Scrape_yahoo.
+
+![yah_image_1](https://github.com/rossleavitt/stock_analysis/blob/main/images/yah_img1.PNG)
+
+While I like using Scrape_wsj for retreiving financial data, there is some data which is much easier to get from Yahoo. For instance, one of the things I scraped for above is the "Trailing Annual Dividend". Getting this information from wsj.com would have required me to get the company's yearly dividend total and their market cap, so returning it straight from Yahoo was a lot easier. Yahoo also gives each company's "Most Recent Quarter" which I scraped for so I know when each company will release their next earnings report. The main reason I built this code was for their valuation metrics. In my factor analysis I wanted to filter out companies with high Price/Book and Price/Earnings ratios. Not only do they offer current valuation ratios but also list them for the past several quarters.
+
+To get to the web page that I scraped for this project, go to any stock's Yahoo Finance page and click on the header called "Statistics". [Here](https://finance.yahoo.com/quote/NEE/key-statistics?p=NEE) is NextEra Energy's Yahoo Finance Statistics page for reference. The web page is split into a "Valuation Measures" section and everything else (what I call in my code "Financial Stats"). *Note: I recommend opening up the web page so you can follow along when I go into how this code is used below.*
+
+To operate this program you need to update the Google Sheets in a similar way to what we did for Scrape_wsj. Put all tickers in column A. In Row 1, enter 'Valuation' if you want to access "Valuation Measures" and enter 'Financial' if you want to scrape for any of the data below the "Valuation Measures" table. In Row 2, enter an applicable Label (e.g. Trailing P/E). Finally, in row 3 enter an integer for Quarter if you selected 'Valuation' for Type. The integer that you enter tells the program which column of the "Valuation Measures" table you want to get. 1 is current, 2 is the last quarter, etc. If you selected 'Financial' for Type, you don't need to enter a Quarter because there is only one possible value for everything on the bottom half of the web page. Now I can run the program and the red cells will populate. 
