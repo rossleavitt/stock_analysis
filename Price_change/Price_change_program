@@ -1,0 +1,94 @@
+import yfinance as yf
+import pandas as pd
+import gspread
+import json
+from oauth2client.service_account import ServiceAccountCredentials
+import string
+import datetime
+import time
+
+#THE BELOW CODE USES AN API CREATED BY RAN AROUSSI. FIND DOCUMENTATION HERE: https://aroussi.com/post/python-yahoo-finance
+
+#google sheets connection
+scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
+client = gspread.authorize(creds)
+workbook = client.open_by_url('https://docs.google.com/spreadsheets/d/1j-70U9OT4ZMLUF-VQjhEiXTaCi8z5w0VGOnHahutcfY/edit#gid=2024795337')
+sheet = workbook.worksheet('Price_test')
+
+#INTERVAL, START, END, TICKERS ARE ENTERED ON GOOGLE SHEET
+#valid intervals are 1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo
+interval = str(sheet.cell(1,2).value)
+start = str(sheet.cell(2,2).value)
+
+#END DATE ISN'T INCLUSIVE
+end = str(sheet.cell(3,2).value)
+
+#tickers are entered in the first row
+tickers = sheet.row_values(1)[3:103]
+
+
+
+#used to place data on google sheet later
+num_to_letter_dict = dict(enumerate(string.ascii_uppercase, 1))
+
+def get_info(ticker):
+  ticker_query = yf.Ticker(ticker)
+
+  #sets our interval, start date, and end date
+  ticker_history = ticker_query.history(interval=interval, start=start,end=end)
+  data = pd.DataFrame(ticker_history)['Close']
+
+  #takes in the values from the api and then turns it into a JSON object to be entered on the google sheet
+  values = data.to_json(orient='values')
+  values_parsed = json.loads(values)
+
+  #returns dates from the api, turns into JSON object to be entered into first column on G Sheet
+  dates = data.to_json(orient='index')
+  dates_parsed = json.loads(dates)
+
+  return (values_parsed, dates_parsed)
+
+
+#sets up 'Date' column. date_row keeps track of where to enter dates on G Sheet
+date_row = 2
+sheet.update_cell(1,3,"Date")
+
+for col_num, ticker in enumerate(tickers):
+
+  #we only want to enter dates once on the spreadsheet so we get them on the very first ticker
+  if col_num == 0:
+
+    #dates returns every applicable date based on start and end date and the interval
+    dates = get_info(ticker)[1]
+
+    #iterates through each value in dates.
+    for date in dates:
+
+      #converts time stamp which is in miliseconds to seconds. Converts time_stamp to a normal date mm/dd/YYYY
+      time_stamp = datetime.datetime.fromtimestamp((float(date) + float(8.64e7))/1e3)
+      norm_date = datetime.datetime.strftime(time_stamp,"%m/%d/%Y")
+
+      #updates column A with dates
+      sheet.update("C" + str(date_row), norm_date)
+      date_row += 1
+
+  #for each ticker, get all the data we are asking for based on interval and the start and end date
+  price_array = get_info(ticker)[0]
+
+  #row_num reset to 0 each time we get a new ticker
+  row_num = 0
+
+  #we iterate through price_array and each value is entered on the sheet as long as it's not None
+  for value in price_array:
+    if value is None:
+        continue
+
+    #col_num and row_num used in conjunction with num_to_letter_dict to place values
+    else:
+      sheet.update(str(num_to_letter_dict[4+col_num]) + str(row_num+2), value)
+
+    row_num += 1
+
+  #implemented to avoid request restrictions.
+  time.sleep(20)
