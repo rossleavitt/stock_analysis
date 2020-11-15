@@ -12,9 +12,5 @@ The Start Date should be the day you want to begin tracking for. End Date should
 
 After that, run the code and the relevant cells will populate.
 
-I found two great uses for this code. First, I used the 1mo interval to return data for all large-cap utility companies over the last 10 months or so. Then I compared each company's increase or decrease in market price from 'pre-Covid to Covid', from 'Covid to now', and from 'pre-Covid to now'. This gave me a sense of the winners and losers so far due to the Covid-19 pandemic.
-
-The other way in which I used this code was as a 'Historical Moving Average' calculator. 
-
-
+The main use that I had for this program was so that I could compare different companies within the same industry to see how each has fared over time. For example, I used the 1mo interval to return data for all large-cap utility companies over the last 10 months or so. Then I compared each company's increase or decrease in market price from 'pre-Covid to Covid', from 'Covid to now', and from 'pre-Covid to now'. This gave me a sense of the winners and losers so far due to the Covid-19 pandemic. 
 
