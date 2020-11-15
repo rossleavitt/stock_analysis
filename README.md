@@ -5,6 +5,8 @@ I decided to make this one project instead of four separate ones because they al
 
 Below are short summaries for each of the programs that I made. Each program has a folder which contains the code for the program and a readme which goes into more information about each program, why I made it, and how I used it. 
 
+3 of the 4 programs below utilize the Google Sheets API. A tutorial on how to set up the Google Sheets API in Python can be found [here](https://www.youtube.com/watch?v=cnPlKLEGR7E&t=3s&ab_channel=TechWithTim).
+
 **Scrape_wsj:** scrapes financial statement information (either from the balance sheet, income statement, or statement of cash flows) from wsj.com and enters that data into Google Sheets. Can specify between Quarterly and Yearly financial data. 
 
 **Scrape_yahoo:** scrapes a company's Yahoo Financial Statistics page which offers information regarding that company's valuation ratios, profitability metrics, and other general information relating to that company. Inputs data into Google Sheets.
@@ -12,6 +14,3 @@ Below are short summaries for each of the programs that I made. Each program has
 **Scrape_finra:** scrapes Morningstar's Finra site so that I can have access to the bond yields of a particular bond offering from a company of interest. It will keep scraping until it reaches a certain predetermined date, giving the user time-series data of bond yields. Returns bond yield information in an Excel spreadsheet.
 
 **Price_change:** uses an API (documentation [here](https://aroussi.com/post/python-yahoo-finance)) which returns time-series data of a stock's market price at close. Enters data into Google Sheets. 
-
-3 of the 4 programs above utilizes the Google Sheets API. A tutorial on how to set up the Google Sheets API in Python can be found [here](https://www.youtube.com/watch?v=cnPlKLEGR7E&t=3s&ab_channel=TechWithTim).
-
