@@ -1,0 +1,122 @@
+from selenium import webdriver
+import os
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import xlsxwriter
+from datetime import datetime
+import time
+
+#set date which you want to stop at
+target_date = '9/9/2020'
+
+#chrome driver connection
+chrome_driver = os.path.abspath('C:/Users/ross/Desktop/chromedriver.exe')
+browser = webdriver.Chrome(chrome_driver)
+
+#don't want to iterate through multiple bond offerings, just different bond yields so the url is fully hard coded in
+browser.get('http://finra-markets.morningstar.com/BondCenter/BondTradeActivitySearchResult.jsp?ticker=C931349&startdate=11%2F12%2F2019&enddate=11%2F12%2F2020')
+
+#clicks agreement to get to data we want
+WebDriverWait(browser, 60).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '#ms-agreement > input'))).click()
+
+#allows us to write to workbook
+workbook = xlsxwriter.Workbook('test.xlsx')
+worksheet = workbook.add_worksheet()
+
+
+def scrape_finra(iteration):
+
+    #for each iteration get the columns with dates, yields, statuses, and quantities
+    retrieve_date = WebDriverWait(browser, 45).until(EC.presence_of_all_elements_located(
+        (By.XPATH, '//*[@id="ms-glossary"]/div/table/tbody/tr[' + str(iteration) + ']/td[1]/div')))
+    retrieve_yield = WebDriverWait(browser, 45).until(EC.presence_of_all_elements_located(
+        (By.XPATH, '//*[@id="ms-glossary"]/div/table/tbody/tr[' + str(iteration) + ']/td[7]/div')))
+    retrieve_status = WebDriverWait(browser, 45).until(EC.presence_of_all_elements_located(
+        (By.XPATH, '//*[@id="ms-glossary"]/div/table/tbody/tr[' + str(iteration) + ']/td[4]/div')))
+    retrieve_quantity = WebDriverWait(browser, 45).until(EC.presence_of_all_elements_located(
+        (By.XPATH, '//*[@id="ms-glossary"]/div/table/tbody/tr[' + str(iteration) + ']/td[5]/div')))
+
+    
+    status = retrieve_status[0].text
+    date = retrieve_date[0].text
+    bond_yield = retrieve_yield[0].text
+
+    #if the quantity is over 5 million, it is entered as '5MM+' on the site. This is converted to 5 million so all quantities can be entered as integers
+    if retrieve_quantity[0].text == "5MM+":
+        quantity = 5000000
+    else:
+        quantity = retrieve_quantity[0].text
+
+    return date, bond_yield, status, quantity
+
+
+#row_iteration keeps track of what is being scraped on the WEB PAGE
+row_iteration = 1
+
+#tot_num_rows keeps track of where the data is being entered on the EXCEL SPREADSHEET
+tot_num_rows = 1
+
+#click_num keeps track of the number page that we are currently on
+click_num = 1
+
+worksheet.write_string(0,0,"Date")
+worksheet.write_string(0,1,"Bond Yield")
+worksheet.write_string(0,2,"Trade Amount")
+
+#stop_running doesn't have a condition in the while loop below because we are unsure when we will exit the loop
+#we only exit the loop when date < target_date
+while click_num < 100:
+
+    # row_iteration begins at 1 and works all the way up to 20, unless the code gets stopped because the target_date is met
+    row_iteration += 1
+
+    #uses scrape_finra to get set of data
+    date = scrape_finra(row_iteration)[0]
+    bond_yield = scrape_finra(row_iteration)[1]
+    status = scrape_finra(row_iteration)[2]
+    quantity = scrape_finra(row_iteration)[3]
+
+
+
+    #if date < target_date then exit the while loop
+    if datetime.strptime(date, "%m/%d/%Y") < datetime.strptime(target_date, "%m/%d/%Y"):
+        break
+
+
+    #as long as the status is 'Trade' and all other fields are non-blanks then write to worksheet
+    if status == 'Trade' and date != "" and bond_yield != "" and quantity != "":
+
+        worksheet.write_string(tot_num_rows, 0, str(date))
+        worksheet.write_number(tot_num_rows, 1, float(bond_yield))
+        worksheet.write_number(tot_num_rows, 2, int(quantity))
+
+
+        #since this is writing to the worksheet, tot_num_rows is used below to keep track of where on the spreadsheet we're printing to
+        tot_num_rows += 1
+
+
+    if row_iteration == 20:
+        #once row_iteration reaches 20, we need to go to the next page first by adding one to click_num
+        click_num += 1
+
+        #clears text box on web page
+        WebDriverWait(browser, 60).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "input.qs-ui-ipt.qs-pageutil-input"))).clear()
+
+        #enters click_num number into text box
+        WebDriverWait(browser, 60).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "input.qs-ui-ipt.qs-pageutil-input"))).send_keys(str(click_num))
+
+        #goes to next page
+        WebDriverWait(browser, 60).until(EC.element_to_be_clickable(
+            (By.CSS_SELECTOR, '#ms-glossary > div > table > tfoot > tr > td > div > a.qs-pageutil-go'))).click()
+
+        #row_iteration set back to 0 because we are on new web page
+        row_iteration = 0
+
+        #without the below the web page that we are now supposed to be on would take too long to load so the code would be scraping the same data as the last page that we were on
+        #now the code stops for 5 seconds while the new page is loading and then the code continues to scrape
+        time.sleep(5)
+
+workbook.close()
