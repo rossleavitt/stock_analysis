@@ -10,7 +10,7 @@ If you are looking to use this code yourself here are the steps you should take 
 
 * First, in cell A1 enter either 'Annually' or 'Quarterly' depending on whether you are looking for annual data or quarter data. 
 
-* Second, enter the ticker symbols of the companies you'd like to scrape for in in column 1.
+* Second, enter the ticker symbols of the companies you'd like to scrape for in in column A, starting at row 4.
 
 * Third, in the first three rows of the Google Sheet you should enter the information regarding the type of data you want to collect. This consists of the **Statement**, **Time Period**, and **Account**. 
   
