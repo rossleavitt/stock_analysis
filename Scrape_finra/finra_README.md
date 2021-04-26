@@ -1,5 +1,7 @@
 **Scrape_finra motivation and usage**
 
+Note: this code was not used in the factor analysis but was used when I decided to do an extended analysis of EXC (Exelon Corporation) and PNW (Pinnacle West Capital Corporation).
+
 This code uses Selenium to scrape Morningstar's Finra tool which lists bond offering information.
 
 I wanted to be able to see how a particular company's liquidity and solvency risk has changed over time which is the reason why I created this program. The Coronavirus pandemic had made a mess of the debt markets in March and April and I was interested to see if companies were still having a hard time financing through debt or if they were back to normal levels. By accessing the Finra data I can see how a company's bond yields have changed over time for a certain bond offering. I can look for a short-term and long-term bond offering and get a pretty good idea of what the bond market thinks of the company. 
